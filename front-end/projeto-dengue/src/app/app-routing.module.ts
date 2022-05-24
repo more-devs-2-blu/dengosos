@@ -21,6 +21,8 @@ const routes: Routes = [
   { path: 'grafico-casos', component: GraficoCasosComponent },
   { path: 'grafico-faixa-etaria', component: GraficoFaixaEtariaComponent },
 
+  { path: 'mapeamento', component: GraficoFocosComponent },
+
   { path: 'login', component: TelaLoginComponent },
 
   { path: '', redirectTo: '/landing-page', pathMatch:'full' }

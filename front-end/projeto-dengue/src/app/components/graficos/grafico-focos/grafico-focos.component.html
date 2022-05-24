@@ -1,1 +1,25 @@
-<p>grafico-focos works!</p>
+<!-- Poder ver quais bairros tem mais focos  -->
+<div class="container">
+  <h1>Onde o dengoso está dominando?</h1>
+  <p>Aqui você encontra a quantidade de <b>focos</b> por <b>bairro</b> em Blumenau!
+  </p>
+  <div class="grafico">
+    <div>
+      <div>
+        <div style="display: block">
+          <!-- *ngIf="isLoadedFocos && isLoadedNames" -->
+          <canvas  baseChart
+            [data]="chartData"
+            [legend]="polarAreaLegend"
+            [type]="polarAreaChartType"
+            >
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row mb-5 d-flex justify-content-between">
+    <button>Oi</button>
+    <button>Tchau</button>
+  </div>
+</div>

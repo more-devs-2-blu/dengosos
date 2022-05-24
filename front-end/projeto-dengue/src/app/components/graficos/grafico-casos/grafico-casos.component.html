@@ -1,1 +1,21 @@
-<p>grafico-casos works!</p>
+<!-- quais bairros possuem mais pessoas com suspeita ou confirmada  -->
+<!-- Poder ver quais bairros tem mais focos  -->
+<div class="container">
+  <h1>Vê se o dengoso está na área!</h1>
+  <p>Aqui você encontra a quantidade de <b>casos</b> por <b>bairro</b> em Blumenau!</p>
+  <div class="grafico">
+    <div>
+      <div>
+        <div style="display: block">
+          <!-- *ngIf="isLoadedFocos && isLoadedNames" -->
+          <canvas baseChart
+            [data]="chartData"
+            [legend]="polarAreaLegend"
+            [type]="polarAreaChartType"
+            >
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

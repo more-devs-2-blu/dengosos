@@ -14,6 +14,7 @@ import { GraficoFocosComponent } from './components/graficos/grafico-focos/grafi
 import { GraficoCasosComponent } from './components/graficos/grafico-casos/grafico-casos.component';
 import { GraficoFaixaEtariaComponent } from './components/graficos/grafico-faixa-etaria/grafico-faixa-etaria.component';
 import { TelaLoginComponent } from './components/tela-login/tela-login.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { TelaLoginComponent } from './components/tela-login/tela-login.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
