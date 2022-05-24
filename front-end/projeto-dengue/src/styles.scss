@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300&family=Roboto:wght@300;400;500&display=swap');
 :root
 {
   --cor0: #0d0d0d;
@@ -9,4 +10,7 @@
   --cor5: #fff;
 }
 
-
+*
+{
+  font-family: 'Roboto', sans-serif;
+}

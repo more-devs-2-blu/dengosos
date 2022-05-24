@@ -1,3 +1,4 @@
+import { TelaLoginComponent } from './components/tela-login/tela-login.component';
 import { GraficoFaixaEtariaComponent } from './components/graficos/grafico-faixa-etaria/grafico-faixa-etaria.component';
 import { GraficoCasosComponent } from './components/graficos/grafico-casos/grafico-casos.component';
 import { GraficoFocosComponent } from './components/graficos/grafico-focos/grafico-focos.component';
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'grafico-focos', component: GraficoFocosComponent },
   { path: 'grafico-casos', component: GraficoCasosComponent },
   { path: 'grafico-faixa-etaria', component: GraficoFaixaEtariaComponent },
+
+  { path: 'login', component: TelaLoginComponent },
 
   { path: '', redirectTo: '/landing-page', pathMatch:'full' }
 ];

@@ -1,0 +1,29 @@
+h1 {
+  font-size: 60px;
+  font-weight: 600;
+  background-image: linear-gradient(to right, var(--cor1), var(--cor3));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+h2
+{
+  font-weight: 600;
+  color: var(--cor1);
+}
+
+.login-page
+{
+  min-height: 80vh;
+}
+
+.img
+{
+  background-image: url('../../../assets/_img/juntos-mais-fortes.jpg');
+  height: 480px;
+  width: 640px;
+  background-position: center top;
+  background-size: cover;
+  display: flex;
+}

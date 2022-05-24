@@ -13,6 +13,7 @@ import { TelaInformacaoComponent } from './components/tela-informacao/tela-infor
 import { GraficoFocosComponent } from './components/graficos/grafico-focos/grafico-focos.component';
 import { GraficoCasosComponent } from './components/graficos/grafico-casos/grafico-casos.component';
 import { GraficoFaixaEtariaComponent } from './components/graficos/grafico-faixa-etaria/grafico-faixa-etaria.component';
+import { TelaLoginComponent } from './components/tela-login/tela-login.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { GraficoFaixaEtariaComponent } from './components/graficos/grafico-faixa
     TelaInformacaoComponent,
     GraficoFocosComponent,
     GraficoCasosComponent,
-    GraficoFaixaEtariaComponent
+    GraficoFaixaEtariaComponent,
+    TelaLoginComponent
   ],
   imports: [
     BrowserModule,
