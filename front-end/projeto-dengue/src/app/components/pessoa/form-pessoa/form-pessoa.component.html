@@ -1,0 +1,85 @@
+<div class="container mt-5 mb-5">
+  <div class="eight mb-5">
+    <h1>Sobre Você</h1>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input name="nome" class="form-control col-md-6" type="text" placeholder="Insira seu nome">
+    </div>
+
+    <div class="form-group">
+      <label for="data-nascimento">Data de Nascimento</label>
+      <input type="text" class="form-control col-md-6" placeholder="TODO">
+    </div>
+
+    <div class="form-group">
+      <label for="sexo">Sexo</label>
+      <select name="sexo"
+              id="sexo"
+              class="form-control col-md-4"
+              >
+        <option selected disabled>Escolha...</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+        <option value="O">Outro</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="situacao">Situação:</label>
+      <select name="situacao"
+      id="situacao"
+      class="form-control col-md-4">
+      <option selected disabled>Escolha...</option>
+      <option value="S">Suspeito</option>
+      <option value="C">Confirmado</option>
+      </select>
+    </div>
+
+    <!-- VIA CEP API -->
+    <div class="form-group">
+      <label for="endereço">CEP:</label>
+      <input type="text" (blur)="getViaCEP($event)" class="form-control col-md-4" name="cep" placeholder="CEP">
+    </div>
+
+      <!-- ENDEREÇO - API -->
+      <!-- quando o showform for true ele vai exibir -->
+      <div *ngIf="showForm | async " name="retorno-cep">
+        <div class="form-row mb-3">
+          <div class="col">
+            <label for="rua">Rua:</label>
+            <input type="text"  [(ngModel)]="formContato.logradouro" class="form-control col-md-8" name="rua" placeholder="Rua">
+          </div>
+          <div class="col">
+            <label for="numero">Número:</label>
+            <input type="text" [(ngModel)]="formContato.numero" class="form-control col-md-4" name="numero" placeholder="Número">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bairro">Bairro:</label>
+          <input type="text" [(ngModel)]="formContato.bairro" class="form-control col-md-4" name="bairro" placeholder="Bairro">
+        </div>
+
+        <div class="form-row">
+          <div class="col">
+            <label for="cidade">Cidade:</label>
+            <input type="text"  [(ngModel)]="formContato.localidade" class="form-control col-md-8" name="cidade" placeholder="Cidade">
+          </div>
+          <div class="col">
+            <label for="cidade">UF:</label>
+            <input type="text" [(ngModel)]="formContato.uf" class="form-control col-md-4" name="uf" placeholder="UF">
+          </div>
+        </div>
+      </div>
+
+  </form>
+
+  <div class="form-group row">
+    <div class="col-sm-10 mt-4">
+      <button (click)="resetForm()" type="reset" class="btn btn-primary mr-3">Limpar</button>
+      <button (click)="enviarFormPessoa()" type="submit" class="btn btn-success">Enviar</button>
+    </div>
+  </div>
+</div>

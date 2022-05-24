@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+  <a class="navbar-brand" href="#">Dengosos</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Mapas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/tela-informacao">Curioso</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cadastro-pessoa">Cadastre-se</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cadastro-foco">Reporte um Foco</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          Gráficos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/grafico-casos">Gráfico Casos</a>
+          <a class="dropdown-item" routerLink="/grafico-focos">Gráfico Focos</a>
+          <a class="dropdown-item" routerLink="/grafico-faixa-etaria">Gráfico faixa-etária</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,68 @@
+.landing
+{
+  min-height: 90vh;
+  background-position: center top;
+  background-size: cover;
+  display: flex;
+}
+
+.img-landing
+{
+  background-image: url('https://www.unimedribeirao.com.br/fotos/noticias/890364521-todos-contra-dengue.png');
+  width: 50%;
+  background-position: center top;
+  background-size: cover;
+}
+
+.img-landing p
+{
+  font-size: 30px;
+}
+
+.info-landing
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.texto-landing
+{
+  width: 80%;
+  padding: 20px 20px 20px 30px;
+}
+
+
+.img-grafico
+{
+  background-image: url('https://s4.static.brasilescola.uol.com.br/be/2020/03/shutterstock-396863464.jpg');
+  width: 50%;
+  background-position: center top;
+  background-size: cover;
+}
+
+
+.cards-landing
+{
+  min-height: 50vh;
+}
+
+@media screen and (max-width: 700px)
+{
+  .img-landing
+  {
+    background-image: none;
+  }
+
+  .info-landing
+  {
+    width: 100%;
+  }
+
+  .texto-landing
+  {
+    width: 100%;
+  }
+}
+
