@@ -34,7 +34,8 @@
  
 * A tela de gráfico abaixo irá relacionar faixas etárias com casos de dengue em Blumenau.
 
-![tela5](https://user-images.githubusercontent.com/62608046/170157279-0918f5c5-a96f-4b8a-a024-05da7cf63947.png)
+![tela5](https://user-images.githubusercontent.com/62608046/170162897-1fba3be3-9a48-4417-b25d-181fefc6628a.png)
+
 
 ## Tela 6:
  
