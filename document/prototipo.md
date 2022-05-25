@@ -3,7 +3,7 @@
 
 ## Tela 1: 
 
-* A tela inicial será a apresentação da aplicação ao usuário. Terá diferentes seções apresentando diferentes tópicos de maneira simples e objetiva.
+* A tela inicial será a apresentação da aplicação ao usuário. Terá diferentes seções apresentando diferentes tópicos de maneira simples e objetiva. Nela o usuário poderá navegar para outras páginas contidas na aplicação, tendo acesso ao conteúdo das mesmas.
 
 ![image](https://user-images.githubusercontent.com/62608046/170156039-4ae9e663-e334-4b74-81ef-f6e5cb9f031f.png)
 
@@ -14,13 +14,13 @@
 
 ## Tela 2:
  
-* A tela de formulário do *usuário* pedirá informações básicas para ajudar a alimentar as estatísticas referentes a casos confirmados/suspeitos e faixa etária.
+* A tela Pessoas contém um formulário para o *usuário*, que pedirá informações básicas para ajudar a alimentar as estatísticas referêntes a casos confirmados/suspeitos e faixa etária.
 
 ![tela2](https://user-images.githubusercontent.com/62608046/170156809-9df7bc31-5e0d-4028-a419-46e48312ce7b.png)
 
 ## Tela 3:
  
-* A tela de formulário do *foco* pedirá informações básicas para ajudar a alimentar as estatísticas referentes a focos do mosquito.
+* A tela Focos contém um formulário para o reporte do *foco*, que pedirá informações básicas de localização para ajudar a alimentar as estatísticas referêntes a focos do mosquito.
 
 ![tela3](https://user-images.githubusercontent.com/62608046/170157076-82381ccb-18df-4104-9e0c-d5be1e608810.png)
 
@@ -45,7 +45,7 @@
 
 ## Tela 7:
  
-* A tela trará conscientização sobre prevenção do mosquito da dengue de maneira clara e objetiva para fácil compreensão do usuário.
+* A tela Curioso trará conscientização sobre a dengue, a prevenção do mosquito da dengue, além de ações que podem ser tomadas. De maneira clara e objetiva, utilizando Legal Design, para fácil compreensão do usuário. 
 
 ![tela7](https://user-images.githubusercontent.com/62608046/170157443-126c4054-f1e8-47be-afd3-3a5293580ecb.png)
 
