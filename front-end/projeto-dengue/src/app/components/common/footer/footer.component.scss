@@ -1,27 +1,38 @@
-.footer-class
+
+
+.footer
 {
+  overflow: hidden;
   background-color: var(--cor1);
+  padding: 20px 10px;
+  color: #fff;
+  position: sticky;
+  top: 100%;
 }
 
-.text-italic
+h1
 {
-  font-style: italic;
-  color: white;
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.link-icon
+p
+{
+  font-size: 15px;
+  font-style: italic;
+}
+
+a
 {
   color: white;
   text-decoration: none;
+  padding: 0px 5px;
+  font-size: 17px;
 }
 
-.link-icon:hover
+a:hover
 {
   color: var(--cor4);
   transition: .5s;
 }
 
-.contacts
-{
-  color: white;
-}
