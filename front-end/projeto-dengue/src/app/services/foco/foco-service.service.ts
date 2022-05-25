@@ -36,4 +36,20 @@ export class FocoServiceService {
   {
     return this.http.delete<boolean>(`${this.urlApiFocos}/${id}`);
   }
+
+  getQtdFocosPorBairro()
+  {
+    return this.http.get<number[]>(`${this.urlApiFocos}/quantidadeFocos`)
+  }
+
+  getNomeBairros()
+  {
+    return this.http.get<string[]>(`${this.urlApiFocos}/nomesBairros`)
+  }
+
+  getListFocos() {
+    console.log("Oi");
+    return this.http.get(this.urlApiFocos);
+  }
+
 }

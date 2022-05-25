@@ -1,25 +1,18 @@
+<!-- quais bairros possuem mais pessoas com suspeita ou confirmada  -->
 <!-- Poder ver quais bairros tem mais focos  -->
-<div class="container">
+<div class="container mt-5 mb-5">
   <h1>Onde o dengoso está dominando?</h1>
-  <p>Aqui você encontra a quantidade de <b>focos</b> por <b>bairro</b> em Blumenau!
-  </p>
+  <p>Aqui você encontra a quantidade de <b>focos</b> por <b>bairro</b> em Blumenau!</p>
   <div class="grafico">
     <div>
       <div>
-        <div style="display: block">
-          <!-- *ngIf="isLoadedFocos && isLoadedNames" -->
-          <canvas  baseChart
-            [data]="chartData"
-            [legend]="polarAreaLegend"
-            [type]="polarAreaChartType"
-            >
-          </canvas>
-        </div>
+        <canvas *ngIf="isLoadedNames && isLoadedFocos" id="my_first_chart"></canvas>
       </div>
+      <div class="flex mt-4">
+        <span class="badge badge-pill badge-danger">---</span><p>Acima da média</p>
+        <span class="badge badge-pill badge-warning">---</span><p>Alerta</p>
+      </div>
+      <button (click)="showChart()">Update</button>
     </div>
-  </div>
-  <div class="form-row mb-5 d-flex justify-content-between">
-    <button>Oi</button>
-    <button>Tchau</button>
   </div>
 </div>

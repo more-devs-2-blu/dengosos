@@ -11,7 +11,7 @@ export class PessoaServiceService
 
   constructor(private http: HttpClient) { }
 
-  urlApiPessoa = `${environment.urlApi}/focos`;
+  urlApiPessoa = `${environment.urlApi}/pessoas`;
 
   getPessoas()
   {
@@ -37,4 +37,15 @@ export class PessoaServiceService
   {
     return this.http.delete<boolean>(`${this.urlApiPessoa}/${id}`);
   }
+
+  getQtdCasosPorBairro()
+  {
+    return this.http.get<number[]>(`${this.urlApiPessoa}/quantidadeCasos`)
+  }
+
+  getNomeBairros()
+  {
+    return this.http.get<string[]>(`${this.urlApiPessoa}/nomesBairros`)
+  }
+
 }

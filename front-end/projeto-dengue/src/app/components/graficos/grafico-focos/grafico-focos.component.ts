@@ -1,6 +1,6 @@
 import { FocoServiceService } from './../../../services/foco/foco-service.service';
 import { Component, OnInit } from '@angular/core';
-import { ChartData, ChartEvent, ChartType } from 'chart.js';
+import { ChartType, ChartData, ChartEvent, Chart, registerables } from 'chart.js';
 
 @Component({
   selector: 'app-grafico-focos',
@@ -9,75 +9,116 @@ import { ChartData, ChartEvent, ChartType } from 'chart.js';
 })
 export class GraficoFocosComponent implements OnInit {
 
-  constructor(private focosApi: FocoServiceService) { }
-
-  listaFocosPorRegiao$ : number[] = [];
-  listaNomesRegioes$: string[] = [];
+  listaFocosPorBairro$ : number[] = [];
+  listaNomesBairros$: string[] = [];
   isLoadedFocos: boolean = false;
   isLoadedNames: boolean = false;
+  backgroundColor: string[] = [];
+
+  constructor(private focosApi: FocoServiceService) { }
+  chart: any;
 
   ngOnInit(): void
   {
-    this.atualizarNomesRegioes()
-    this.atualizarFocosPorRegiao()
+    this.atualizarNomesRegioes();
+    this.atualizarCasosPorBairro();
+    this.setBarColors();
+    this.showChart();
   }
 
-  atualizarFocosPorRegiao()
+  showChart()
   {
-    // TODO: métodos no back end
-    // this.focosApi.???????().subscribe(
-    //   (data) => {
-    //     this.listaFocosPorRegiao$ = data;
-    //     console.log(this.listaFocosPorRegiao$)
-    //     console.log(data)
+    this.chart = document.getElementById('my_first_chart')
+    Chart.register(...registerables);
+    this.loadChart();
+    this.chart.update();
+  }
 
-        // console.log('dados do chart agora antes do subscribe')
-        // console.log(this.chartData.datasets[0])
-        // console.log('igualando as listas')
-        // this.chartData.datasets[0].data = this.listaQtdHabitantes$
-        // console.log('dados do chart agora depois do subscribe')
-        // console.log(this.chartData.datasets[0])
-        // this.isLoadedFocos = true;
-    //   }
-    // )
+  atualizarCasosPorBairro()
+  {
+      this.focosApi.getQtdFocosPorBairro().subscribe(
+        (data) => {
+          this.listaFocosPorBairro$ = data;
+          this.isLoadedFocos = true;
+          this.setBarColors();
+       }
+     )
   }
 
   atualizarNomesRegioes()
   {
-    // // TODO: métodos no back end
-    // this.focosApi.???????().subscribe(
-    //   (data) => {
-    //     this.listaNomesRegioes$ = data;
-    //     console.log(this.listaNomesRegioes$)
-    //     console.log(data)
-    //     this.chartData.labels = this.listaNomesRegioes$;
-    //     this.isLoadedNames = true;
-    //   }
-    // )
+     this.focosApi.getNomeBairros().subscribe(
+        (data) => {
+          this.listaNomesBairros$ = data;
+          this.isLoadedNames = true;
+      }
+    )
   }
 
-  // PolarArea
-  polarAreaLegend = true;
-  polarAreaChartType: ChartType = 'polarArea';
-  polarAreaChartLabels: string[] = this.listaNomesRegioes$;
-
-  chartData: ChartData<'polarArea'> = {
-    labels: ['teste', 'teste', 'teste', 'teste'],
-    datasets:
-    [
-      {
-        data: [33, 42, 51, 65, 53, 23, 12, 42, 21],
-        label: 'Section 1'
+  loadChart() : void
+  {
+    new Chart(this.chart, {
+      type: 'bar',
+      data: {
+        labels: this.listaNomesBairros$,
+        datasets: [
+          {
+            label: 'Quantidade de casos',
+            data: this.listaFocosPorBairro$,
+            borderColor:  this.backgroundColor,
+            backgroundColor: this.backgroundColor,
+            hoverBackgroundColor: this.backgroundColor,
+            hoverBorderColor: this.backgroundColor,
+          }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        elements: {
+          bar: {
+            borderWidth: 1,
+          }
+        },
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Quantidade de casos por bairro em Blumenau'
+          }
+        }
       }
-    ]
-  };
+    });
+  }
 
-   // events
-   public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
-     console.log(event, active);
-   }
-   public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
-     console.log(event, active);
-   }
+  calcularQtdCasosMedia()
+  {
+    var numeroTotalCasos: number = 0;
+    var iterador: any;
+    for(iterador in this.listaFocosPorBairro$)
+    {
+      numeroTotalCasos+= this.listaFocosPorBairro$[iterador];
+    }
+    var media = numeroTotalCasos / this.listaNomesBairros$.length;
+    return media;
+  }
 
+  setBarColors()
+  {
+    var media = this.calcularQtdCasosMedia();
+    var qtdCasos: any;
+      for (qtdCasos in this.listaFocosPorBairro$)
+      {
+        if (this.listaFocosPorBairro$[qtdCasos] > media)
+        {
+           this.backgroundColor.push('#D4080C');
+        }
+        else if (this.listaFocosPorBairro$[qtdCasos] < media)
+        {
+           this.backgroundColor.push('#F29200');
+        }
+      }
+  }
 }

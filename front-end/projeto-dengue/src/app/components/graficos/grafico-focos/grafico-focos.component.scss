@@ -1,8 +1,32 @@
 h1 {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 600;
-  background-image: linear-gradient(to right, var(--cor1), var(--cor3));
+  background-image: linear-gradient(to left, var(--cor1), var(--cor3));
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+.badge-danger
+{
+  color: #D4080C;
+  background-color: #D4080C;
+}
+
+.flex p
+{
+  margin-bottom: 0;
+  margin-left: 3px;
+  margin-right: 5px;
+}
+
+.flex
+{
+  display: flex;
+}
+
+.badge-warning
+{
+  color: #F29200;
+  background-color: #F29200;
 }

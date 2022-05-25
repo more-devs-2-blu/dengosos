@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,8 @@ import { GraficoCasosComponent } from './components/graficos/grafico-casos/grafi
 import { GraficoFaixaEtariaComponent } from './components/graficos/grafico-faixa-etaria/grafico-faixa-etaria.component';
 import { TelaLoginComponent } from './components/tela-login/tela-login.component';
 import { NgChartsModule } from 'ng2-charts';
+import { ImgFocoComponent } from './components/img-foco/img-foco.component';
+
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { NgChartsModule } from 'ng2-charts';
     GraficoFocosComponent,
     GraficoCasosComponent,
     GraficoFaixaEtariaComponent,
-    TelaLoginComponent
+    TelaLoginComponent,
+    ImgFocoComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ import { NgChartsModule } from 'ng2-charts';
     HttpClientModule,
     FormsModule,
     NgChartsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
