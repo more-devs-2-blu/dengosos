@@ -14,7 +14,7 @@
 
 ## Tela 2:
  
-* A tela de formulário do *usuário* pedirá informações básicas para ajudar a alimentar as estatísticas referentes a casos confirmados/suspeitos.
+* A tela de formulário do *usuário* pedirá informações básicas para ajudar a alimentar as estatísticas referentes a casos confirmados/suspeitos e faixa etária.
 
 ![tela2](https://user-images.githubusercontent.com/62608046/170156809-9df7bc31-5e0d-4028-a419-46e48312ce7b.png)
 
@@ -26,13 +26,13 @@
 
 ## Tela 4:
  
-* A tela de gráfico de casos por bairro em Blumenau trará estatísticas baseadas nos formulários preenchidos pelos usuários.
+* A tela de gráfico abaixo apresentará de maneira direta os casos de dengue por bairro em Blumenau.
 
 ![tela4](https://user-images.githubusercontent.com/62608046/170157197-2f500399-1deb-466f-9d66-2e2c96e1c5f7.png)
 
 ## Tela 5:
  
-* A tela de gráfico de casos por idade em Blumenau trará estatísticas divididas pelas idades dos usuários.
+* A tela de gráfico abaixo irá relacionar faixas etárias com casos de dengue em Blumenau.
 
 ![tela5](https://user-images.githubusercontent.com/62608046/170157279-0918f5c5-a96f-4b8a-a024-05da7cf63947.png)
 
