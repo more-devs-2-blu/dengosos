@@ -1,6 +1,5 @@
 # Protótipo do Grupo "Dengosos"
 
-* Link para o protótipo: 
 
 ## Tela 1: 
 
