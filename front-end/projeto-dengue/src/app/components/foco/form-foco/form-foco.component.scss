@@ -1,10 +1,15 @@
 h1 {
   font-size: 50px;
   font-weight: 600;
-  background-image: linear-gradient(to right, var(--cor1), var(--cor3));
+  background-image: linear-gradient(to left, var(--cor1), var(--cor3));
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+.custom-height
+{
+  min-height: 80vh;
 }
 
 label
@@ -13,5 +18,10 @@ label
   font-size: 17px;
 }
 
+.custom-bg
+{
+  background-color: var(--cor3);
+  border-color: var(--cor3);
+}
 
 
