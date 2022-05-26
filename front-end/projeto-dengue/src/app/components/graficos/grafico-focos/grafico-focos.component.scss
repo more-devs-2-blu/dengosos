@@ -20,6 +20,8 @@ h1 {
   margin-right: 5px;
 }
 
+
+
 .flex
 {
   display: flex;
@@ -29,4 +31,9 @@ h1 {
 {
   color: #F29200;
   background-color: #F29200;
+}
+
+.custom-heigth
+{
+  min-height: 80vh;
 }

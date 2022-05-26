@@ -12,7 +12,7 @@ export class FocoServiceService {
 
   urlApiFocos = `${environment.urlApi}/focos`;
 
-  getFocos()
+  getListFocos()
   {
     return this.http.get<Foco[]>(this.urlApiFocos);
   }
@@ -47,7 +47,7 @@ export class FocoServiceService {
     return this.http.get<string[]>(`${this.urlApiFocos}/nomesBairros`)
   }
 
-  getListFocos() {
+  getListImagensFocos() {
     console.log("Oi");
     return this.http.get(this.urlApiFocos);
   }

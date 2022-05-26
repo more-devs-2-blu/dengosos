@@ -20,9 +20,19 @@ h1 {
   margin-right: 5px;
 }
 
+.custom-heigth
+{
+  min-height: 80vh;
+}
+
 .flex
 {
   display: flex;
+}
+
+.custom
+{
+  margin-top: 2em;
 }
 
 .badge-warning

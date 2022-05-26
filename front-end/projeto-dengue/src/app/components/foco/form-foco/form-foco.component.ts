@@ -1,7 +1,18 @@
 import { ViaCepApiService } from './../../../services/via-cep-api/via-cep-api.service';
 import { Subject } from 'rxjs';
 import { ViaCep } from './../../../models/via-cep/via-cep';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FocoServiceService } from 'src/app/services/foco/foco-service.service';
+import { Foco } from 'src/app/models/foco/foco';
+
+class FormContato {
+  descricaoFocos: string = '';
+  endereco: ViaCep = new ViaCep({});
+
+  constructor(object: Partial<FormContato>) {
+    Object.assign(this, object);
+  }
+}
 
 @Component({
   selector: 'app-form-foco',
@@ -10,11 +21,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormFocoComponent implements OnInit {
 
-  formContato: ViaCep = {};
-  showForm = new Subject<boolean>();
+  msgRetorno = new Subject<boolean>();
+  @Input()
+  formContato = new FormContato({});
   cepInput: string = '';
 
-  constructor(private cepService: ViaCepApiService) { }
+  constructor(private cepService: ViaCepApiService,
+    private focoService: FocoServiceService) { }
 
   ngOnInit(): void {
   }
@@ -32,11 +45,29 @@ export class FormFocoComponent implements OnInit {
       cepResponse.subscribe(
         (cepModel) =>
         {
-          this.formContato = cepModel;
-          this.showForm.next(true);
+          this.formContato.endereco = cepModel;
         }
       )
     }
+  }
+
+  enviarFormFoco()
+  {
+    //desc cep numero logradouro bairro localidade uf
+    let foco = new Foco({descricaoFocos: this.formContato.descricaoFocos, cepFocos: this.formContato.endereco.cep, numeroEnderecoFocos: this.formContato.endereco.numero,
+      logradouroFocos: this.formContato.endereco.logradouro, bairroFocos: this.formContato.endereco.bairro, localidadeFocos: this.formContato.endereco.localidade,
+      ufFocos: this.formContato.endereco.uf});
+      this.focoService.postFoco(foco).subscribe(
+        (msg) => {
+          this.msgRetorno.next(true);
+          setTimeout(()=>
+          {
+            this.msgRetorno.next(false);
+            this.formContato = new FormContato({});
+            this.cepInput = ''
+          },3000);
+        }
+      );
   }
 
 }

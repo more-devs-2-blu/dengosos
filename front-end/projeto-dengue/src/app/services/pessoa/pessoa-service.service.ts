@@ -28,9 +28,9 @@ export class PessoaServiceService
     return this.http.post<Pessoa>(this.urlApiPessoa, pessoa);
   }
 
-  updatePessoa(foco: Pessoa)
+  updatePessoa(pessoa: Pessoa)
   {
-    return this.http.put<Pessoa>(this.urlApiPessoa, foco);
+    return this.http.put<Pessoa>(this.urlApiPessoa, pessoa);
   }
 
   deletePessoa(id: number)
@@ -46,6 +46,11 @@ export class PessoaServiceService
   getNomeBairros()
   {
     return this.http.get<string[]>(`${this.urlApiPessoa}/nomesBairros`)
+  }
+
+  getQtdCasosPorFaixaEtaria()
+  {
+    return this.http.get<number[]>(`${this.urlApiPessoa}/faixasEtarias`)
   }
 
 }

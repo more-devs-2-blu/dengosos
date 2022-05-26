@@ -1,18 +1,20 @@
 <!-- quais bairros possuem mais pessoas com suspeita ou confirmada  -->
 <!-- Poder ver quais bairros tem mais focos  -->
-<div class="container mt-5 mb-5">
+<div class="container custom-heigth mt-5 mb-5">
   <h1>Onde o dengoso está dominando?</h1>
   <p>Aqui você encontra a quantidade de <b>focos</b> por <b>bairro</b> em Blumenau!</p>
-  <div class="grafico">
+  <div class="grafico mt-5">
     <div>
-      <div>
-        <canvas *ngIf="isLoadedNames && isLoadedFocos" id="my_first_chart"></canvas>
+      <div *ngIf="hasLoaded$ | async; else loading">
+        <canvas  id="my_first_chart"></canvas>
       </div>
-      <div class="flex mt-4">
-        <span class="badge badge-pill badge-danger">---</span><p>Acima da média</p>
-        <span class="badge badge-pill badge-warning">---</span><p>Alerta</p>
-      </div>
-      <button (click)="showChart()">Update</button>
+      <ng-template #loading>
+        <app-loading></app-loading>
+      </ng-template>
     </div>
   </div>
+</div>
+<div class="d-flex justify-content-around custom">
+  <a class="btn btn-info" routerLink="/grafico-faixa-etaria" role="button">Faixa Etária</a>
+  <a class="btn btn-info" routerLink="/grafico-casos" role="button">Casos</a>
 </div>

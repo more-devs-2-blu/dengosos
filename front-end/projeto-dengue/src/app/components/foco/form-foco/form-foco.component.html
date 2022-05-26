@@ -7,7 +7,7 @@
     <div class="form-row mb-3">
       <div class="col mr-5">
         <label for="exampleFormControlTextarea1">Descrição: </label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        <textarea [(ngModel)]="formContato.descricaoFocos" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
       </div>
       <div class="col">
         <label for="exampleFormControlFile1">Imagem do foco</label>
@@ -18,36 +18,36 @@
     <!-- VIA CEP API -->
     <div class="form-group">
       <label for="endereço">CEP:</label>
-      <input type="text" (blur)="getViaCEP($event)" class="form-control col-md-4" name="cep" placeholder="CEP">
+      <input type="text" [(ngModel)]="formContato.endereco.cep" (blur)="getViaCEP($event)" class="form-control col-md-4" name="cep" placeholder="CEP">
     </div>
 
       <!-- ENDEREÇO - API -->
       <!-- quando o showform for true ele vai exibir -->
-    <div *ngIf="showForm | async " name="retorno-cep">
+    <div name="retorno-cep">
         <div class="form-row mb-3">
           <div class="col">
             <label for="rua">Rua:</label>
-            <input type="text"  [(ngModel)]="formContato.logradouro" class="form-control col-md-8" name="rua" placeholder="Rua">
+            <input type="text"  [(ngModel)]="formContato.endereco.logradouro" class="form-control col-md-8" name="rua" placeholder="Rua">
           </div>
           <div class="col">
             <label for="numero">Número:</label>
-            <input type="text" [(ngModel)]="formContato.numero" class="form-control col-md-4" name="numero" placeholder="Número">
+            <input type="text" [(ngModel)]="formContato.endereco.numero" class="form-control col-md-4" name="numero" placeholder="Número">
           </div>
         </div>
 
         <div class="form-group">
           <label for="bairro">Bairro:</label>
-          <input type="text" [(ngModel)]="formContato.bairro" class="form-control col-md-4" name="bairro" placeholder="Bairro">
+          <input type="text" [(ngModel)]="formContato.endereco.bairro" class="form-control col-md-4" name="bairro" placeholder="Bairro">
         </div>
 
         <div class="form-row">
           <div class="col">
             <label for="cidade">Cidade:</label>
-            <input type="text"  [(ngModel)]="formContato.localidade" class="form-control col-md-8" name="cidade" placeholder="Cidade">
+            <input type="text"  [(ngModel)]="formContato.endereco.localidade" class="form-control col-md-8" name="cidade" placeholder="Cidade">
           </div>
           <div class="col">
             <label for="cidade">UF:</label>
-            <input type="text" [(ngModel)]="formContato.uf" class="form-control col-md-4" name="uf" placeholder="UF">
+            <input type="text" [(ngModel)]="formContato.endereco.uf" class="form-control col-md-4" name="uf" placeholder="UF">
           </div>
         </div>
     </div>

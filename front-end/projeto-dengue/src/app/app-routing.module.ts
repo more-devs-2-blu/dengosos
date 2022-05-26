@@ -15,13 +15,11 @@ const routes: Routes = [
 
   { path: 'landing-page', component: LandingPageComponent },
 
-  { path: 'tela-informacao', component: TelaInformacaoComponent },
+  { path: 'tela-informacoes', component: TelaInformacaoComponent },
 
   { path: 'grafico-focos', component: GraficoFocosComponent },
   { path: 'grafico-casos', component: GraficoCasosComponent },
   { path: 'grafico-faixa-etaria', component: GraficoFaixaEtariaComponent },
-
-  { path: 'mapeamento', component: GraficoFocosComponent },
 
   { path: 'login', component: TelaLoginComponent },
 

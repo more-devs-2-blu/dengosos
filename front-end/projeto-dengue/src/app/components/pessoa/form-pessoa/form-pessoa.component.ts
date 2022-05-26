@@ -1,7 +1,9 @@
+import { Subject } from 'rxjs';
+import { Pessoa } from './../../../models/pessoa/pessoa';
+import { PessoaServiceService } from './../../../services/pessoa/pessoa-service.service';
 import { ViaCepApiService } from './../../../services/via-cep-api/via-cep-api.service';
 import { ViaCep } from './../../../models/via-cep/via-cep';
-import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 
 class FormContato {
   nome: string = '';
@@ -11,8 +13,7 @@ class FormContato {
   situacao: string = '';
   endereco: ViaCep = new ViaCep({});
 
-  constructor(object: Partial<FormContato>)
-  {
+  constructor(object: Partial<FormContato>) {
     Object.assign(this, object);
   }
 }
@@ -20,54 +21,36 @@ class FormContato {
 @Component({
   selector: 'app-form-pessoa',
   templateUrl: './form-pessoa.component.html',
-  styleUrls: ['./form-pessoa.component.scss']
+  styleUrls: ['./form-pessoa.component.scss'],
 })
-export class FormPessoaComponent implements OnInit
-{
-
+export class FormPessoaComponent implements OnInit {
+  msgRetorno = new Subject<boolean>();
+  @Input()
   formContato = new FormContato({});
-  showForm = new Subject<boolean>();
   cepInput: string = '';
 
-  constructor(private cepService: ViaCepApiService) { }
+  constructor(
+    private cepService: ViaCepApiService,
+    private pessoaService: PessoaServiceService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  getViaCEP(cep: FocusEvent)
-  {
-    if ((cep.target as HTMLInputElement)?.value)
-    {
+  getViaCEP(cep: FocusEvent) {
+    if ((cep.target as HTMLInputElement)?.value) {
       let inputCEP = (cep.target as HTMLInputElement)?.value;
 
-      console.log(inputCEP);
+
 
       const cepResponse = this.cepService.getCep(inputCEP);
 
-      cepResponse.subscribe(
-        (cepModel) =>
-        {
-          this.formContato.endereco = cepModel;
-          this.showForm.next(true);
-        }
-      )
+      cepResponse.subscribe((cepModel) => {
+        this.formContato.endereco = cepModel;
+      });
     }
   }
 
-  enviarFormPessoa()
-  {
-    console.log(`Nome: ${this.formContato.nome}`);
-    console.log(`CPF: ${this.formContato.cpf}`);
-    console.log(`Data de nascimento: ${this.formContato.dataNasc}`);
-    console.log(`Sexo: ${this.formContato.sexo}`);
-    console.log(`Situação: ${this.formContato.situacao}`);
-    console.log(`Rua: ${this.formContato.endereco.logradouro}`);
-    console.log(`Número: ${this.formContato.endereco.numero}`);
-    console.log(`Bairro: ${this.formContato.endereco.bairro}`);
-    console.log(`Cidade: ${this.formContato.endereco.localidade}`);
-    console.log(`UF: ${this.formContato.endereco.uf}`);
-
-
+  enviarFormPessoa() {
     let dataAtual = new Date();
     let dataNascimento = this.formContato.dataNasc;
     let anoAtual = dataAtual.getFullYear();
@@ -85,17 +68,34 @@ export class FormPessoaComponent implements OnInit
     let idade = anoAtual - anoNascInt;
 
     if (mesAtual < mesNascInt) {
-        idade--;
+      idade--;
     } else if (mesAtual == mesNascInt) {
-        if (diaAtual < diaNascInt) {
-            idade--;
-        };
-    };
-   };
+      if (diaAtual < diaNascInt) {
+        idade--;
+      }
+    }
 
-  resetForm()
-  {
-    this.formContato = new FormContato({});
+    //salvar
+    let pessoa = new Pessoa({nomePessoas: this.formContato.nome, cpfPessoas: this.formContato.cpf,
+      idadePessoas: idade, sexoPessoas: this.formContato.sexo, statusPessoas: this.formContato.situacao , cepPessoas: this.formContato.endereco.cep,
+      logradouroPessoas: this.formContato.endereco.logradouro, numeroPessoas: this.formContato.endereco.numero,
+      bairroPessoas: this.formContato.endereco.bairro, localidadePessoas: this.formContato.endereco.localidade,
+      ufPessoas: this.formContato.endereco.uf})
+      console.log(pessoa)
+    this.pessoaService.postPessoa(pessoa).subscribe(
+      (msg) => {
+        this.msgRetorno.next(true);
+        setTimeout(()=>
+        {
+          this.msgRetorno.next(false);
+          this.formContato = new FormContato({});
+          this.cepInput = ''
+        },3000);
+      }
+    );
   }
 
+  resetForm() {
+    this.formContato = new FormContato({});
+  }
 }

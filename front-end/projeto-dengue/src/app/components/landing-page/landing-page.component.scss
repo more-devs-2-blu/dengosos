@@ -1,52 +1,83 @@
-.landing
+.landing-inicio
 {
-  min-height: 90vh;
+    background-image: url('../../../assets/_img/aedes-landing1.png');
+    min-height: 90vh;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+}
+
+.landing-meio
+{
+  background-image: url('../../../assets/_img/landing-2.jpg');
+  min-height: 100vh;
   background-position: center top;
   background-size: cover;
   display: flex;
+  background-attachment: fixed;
 }
 
-.img-landing
+.landing-fim
 {
-  background-image: url('https://www.unimedribeirao.com.br/fotos/noticias/890364521-todos-contra-dengue.png');
-  width: 50%;
-  background-position: center top;
+  background-image: url('../../../assets/_img/landing-3.jpg');
+  min-height: 90vh;
+  background-position: top;
   background-size: cover;
-}
-
-.img-landing p
-{
-  font-size: 30px;
+  background-attachment: fixed;
+  display: flex;
 }
 
 .info-landing
 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+p
+{
+  font-size: 20px;
 }
 
 .texto-landing
 {
+    width: 80%;
+    padding: 20px 20px 20px 30px;
+}
+
+.texto-landing-ultimo
+{
   width: 80%;
   padding: 20px 20px 20px 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.479);
 }
 
+.highlight {
+  font-size: 50px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, var(--cor1), var(--cor3));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
 
-.img-grafico
+.highlight2
 {
-  background-image: url('https://s4.static.brasilescola.uol.com.br/be/2020/03/shutterstock-396863464.jpg');
-  width: 50%;
-  background-position: center top;
-  background-size: cover;
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--cor4);
 }
 
-
-.cards-landing
+.highlight3
 {
-  min-height: 50vh;
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--cor3);
 }
+
 
 @media screen and (max-width: 700px)
 {

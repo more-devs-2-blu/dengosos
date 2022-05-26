@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { Chart, registerables } from 'chart.js';
 import { PessoaServiceService } from './../../../services/pessoa/pessoa-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GraficoFaixaEtariaComponent implements OnInit {
 
+
+  hasLoaded$ = new BehaviorSubject<boolean>(false);
   listaCasosPorIdade$ : number[] = [];
   isLoadedCasos: boolean = false;
   backgroundColor: string[] = [];
@@ -18,9 +21,15 @@ export class GraficoFaixaEtariaComponent implements OnInit {
 
   ngOnInit(): void
   {
-    this.atualizarCasosPorBairro();
-    this.setBarColors();
-    this.showChart();
+    this.pessoasApi.getQtdCasosPorFaixaEtaria().subscribe(
+      (data) => {
+        this.hasLoaded$.next(true);
+        this.listaCasosPorIdade$ = data;
+        this.isLoadedCasos = true;
+     }
+   )
+   this.showChart();
+   setTimeout(() => this.showChart(), 2000);
   }
 
   showChart()
@@ -28,33 +37,22 @@ export class GraficoFaixaEtariaComponent implements OnInit {
     this.chart = document.getElementById('my_first_chart')
     Chart.register(...registerables);
     this.loadChart();
-    this.chart.update();
   }
 
-  atualizarCasosPorBairro()
-  {
-     this.pessoasApi.getQtdCasosPorBairro().subscribe(
-       (data) => {
-         this.listaCasosPorIdade$ = data;
-         this.isLoadedCasos = true;
-         this.setBarColors();
-      }
-    )
-  }
   loadChart() : void
   {
     new Chart(this.chart, {
       type: 'bar',
       data: {
-        labels: this.listaCasosPorIdade$,
+        labels: ['0-15', '16-30','31-45', '46-60', '61-75', '75+'],
         datasets: [
           {
             label: 'Quantidade de casos',
             data: this.listaCasosPorIdade$,
-            borderColor:  this.backgroundColor,
-            backgroundColor: this.backgroundColor,
-            hoverBackgroundColor: this.backgroundColor,
-            hoverBorderColor: this.backgroundColor,
+            borderColor:  '#518ea6',
+            backgroundColor: '#518ea6',
+            hoverBackgroundColor: '#518ea6',
+            hoverBorderColor: '#518ea6',
           }
         ]
       },
@@ -65,41 +63,13 @@ export class GraficoFaixaEtariaComponent implements OnInit {
             position: 'top',
           },
           title: {
-            display: true,
-            text: 'Chart.js Bar Chart'
+            display: false,
+            text: ''
           }
         }
       }
     });
   }
 
-  calcularQtdCasosMedia()
-  {
-    var numeroTotalCasos: number = 0;
-    var iterador: any;
-    for(iterador in this.listaCasosPorIdade$)
-    {
-      numeroTotalCasos+= this.listaCasosPorIdade$[iterador];
-    }
-    var media = numeroTotalCasos / this.listaCasosPorIdade$.length;
-    return media;
-  }
-
-  setBarColors()
-  {
-    var media = this.calcularQtdCasosMedia();
-    var qtdCasos: any;
-      for (qtdCasos in this.listaCasosPorIdade$)
-      {
-        if (this.listaCasosPorIdade$[qtdCasos] > media)
-        {
-           this.backgroundColor.push('#D4080C');
-        }
-        else if (this.listaCasosPorIdade$[qtdCasos] < media)
-        {
-           this.backgroundColor.push('#F29200');
-        }
-      }
-  }
 
 }

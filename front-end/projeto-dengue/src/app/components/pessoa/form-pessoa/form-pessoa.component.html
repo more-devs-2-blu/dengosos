@@ -1,3 +1,12 @@
+<div class="container mb-3 mt-3">
+  <div *ngIf="msgRetorno | async" class="row ">
+    <div class="col">
+      <div class="alert alert-success mt-5 mb-5" role="alert">
+        Formulário enviado com sucesso!
+      </div>
+    </div>
+  </div>
+
 <div class="container mt-5 mb-5 custom-height">
 
   <h1>Sobre Você</h1>
@@ -8,7 +17,7 @@
 
     <div class="form-row mb-3">
       <div class="col">
-        <label for="nome">* Nome:</label>
+        <label for="nome">Nome:</label>
         <input
           name="nome"
           class="form-control col-md-8"
@@ -21,7 +30,7 @@
       </div>
 
       <div class="col">
-        <label for="cpf">* CPF:</label>
+        <label for="cpf">CPF:</label>
         <input
           onkeypress="$(this).mask('000.000.000-00');"
           name="cpf"
@@ -85,7 +94,7 @@
       <div class="invalid-feedback">Please fill out this field.</div>
     </div>
 
-    
+
     <!-- VIA CEP API -->
     <div class="form-group">
       <label for="endereço">CEP:</label>
@@ -103,7 +112,7 @@
 
     <!-- ENDEREÇO - API -->
     <!-- quando o showform for true ele vai exibir -->
-    <div *ngIf="showForm | async" name="retorno-cep">
+    <div  name="retorno-cep">
       <div class="form-row mb-3">
         <div class="col">
           <label for="rua">Rua:</label>

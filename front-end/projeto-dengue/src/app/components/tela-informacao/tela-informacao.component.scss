@@ -1,0 +1,64 @@
+h2 {
+  font-size: 4rem;
+  color: #184b6b;
+  margin-top: 10vh;
+  ;
+}
+
+h5 {
+  color: #184b6b;
+  font-size: 30px;
+}
+
+p, li {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 2.5rem;
+  color: #184b6b;
+  border-bottom: 8px solid;
+  border-color: #167ad8;
+}
+
+@media (max-width: 1200px) {
+  h2 {
+    font-size: calc(1.525rem + 3.3vw);
+  }
+  p {
+    font-size: calc(0.40rem + 3.0vw);
+  }
+  h4 {
+    font-size: calc(1.525rem + 3.3vw);
+  }
+}
+
+//-------------------------------------------------------------------
+
+#textone {
+  margin-top: 10vh;
+}
+
+#img {
+  height: 400px;
+  width: 400px;
+}
+
+.flex {
+  margin-top: 10vh;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1140px;
+}
+
+.flex > div {
+  flex: 1 1 200px;
+}
+
+.card {
+  width: 100%;
+}
+
+#textp {
+  margin: 0px 10px 0px 10px;
+}
