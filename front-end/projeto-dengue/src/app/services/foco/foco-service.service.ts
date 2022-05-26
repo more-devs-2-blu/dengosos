@@ -47,9 +47,9 @@ export class FocoServiceService {
     return this.http.get<string[]>(`${this.urlApiFocos}/nomesBairros`)
   }
 
-  getListImagensFocos() {
-    console.log("Oi");
-    return this.http.get(this.urlApiFocos);
+  postImg(file: any)
+   {
+    return this.http.post<any>(`${environment.urlApi}/file/uploadFile`, file);
   }
 
 }
