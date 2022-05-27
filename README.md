@@ -68,35 +68,16 @@
 
 file.upload-dir= /Users/Acer/OneDrive/Documentos/ProjetoRemedios/UploadDir    
 
-<h2> 📚Requisitos Funcionais: </h2>
-
-@@ -29,8 +51,6 @@
-
-----
-
-
-
-<h2> 📚Requisitos Não Funcionais:</h2>
-
-<p>
-@@ -46,14 +66,14 @@
-
 <h2> 🤝 Créditos </h2>
 
-<p> Fernando Marcos Rodrigues</p>
 <p>Bezalel Miranda Ribeiro: https://github.com/bezalelmiranda</p>
 
-<P>Maria Eduarda Krutzsch</p>
 <p>Fernando Marcos Rodrigues: https://github.com/fernandoblumenau</p>
 
-<p>Sâmela Hostins</p>
 <p Marcus de Paula</p: https://github.com/marcusdepaula>
 
-<p>Bezalel Miranda Ribeiro</p>
 <P>Maria Eduarda Krutzsch: https://github.com/mariaedk</p>
 
-<p> Matheus Venera</p>
 <p>Matheus Venera: https://github.com/MatheusVenera</p>
 
-<p> Marcus de Paula</p>
 <p>Sâmela Hostins: https://github.com/SamelaHostins</p>
