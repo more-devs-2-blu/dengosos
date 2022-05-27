@@ -42,18 +42,61 @@
 
 <p>RNF4: As pessoas podem cadastrar no formulário de pessoas seu nome, data de nascimento, sexo, seu status perante a dengue (confirmada ou suspeita), e seu cpf. Mas não poderão editar ou excluir seu formulário, pós o envio.</p>
 
+<P>As equipes de Prevenção e Combate à Dengue também podem a partir desse site verificar quais locais devem dar mais atenção na retirada de dengue. As fotos ajudarão no auxilio, visto que mais de 60% das denuncias são consideradas improcedentes. Podendo assim verificar como está a situação do local e podendo estabelecer prioridades. A conscientização da população a partir da página de conscientização ajudará na diminuição de denúncias incoerentes.</P>
 
+<h2> PARA FUNCIONAMENTO </h2>
+
+<P>O salvamento das fotos ocorre numa pasta chamada UploadDir. Para que o salvamento funcione é necessário adicionar uma URL de uma pasta que você criará no seu computador, chamada UploadDir, no seu "appliation.properties"</p>
+
+<P>Segue cópia do appliation.properties:</p>
+
+<p>spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect</p>
+<p>spring.jpa.hibernate.ddl-auto = update</p>
+
+<p>spring.jpa.show-sql=true</p>
+<p>spring.jpa.properties.hibernate.format_sql=true</p>
+
+<p>#spring.sql.init.mode=never</p>
+<p>spring.datasource.url = jdbc:mysql://localhost:3306/fimdapicada?serverTimezone=UTC</p>
+<p>spring.datasource.username = root</p>
+<p>spring.datasource.password = admin</p>
+
+<p>spring.servlet.multipart.enabled=true</p>
+<p>spring.servlet.multipart.file-size-threshold=2KB</p>
+<p>spring.servlet.multipart.max-file-size=200MB</p>
+<p>spring.servlet.multipart.max-request-size=215MB</p>
+
+file.upload-dir= /Users/Acer/OneDrive/Documentos/ProjetoRemedios/UploadDir    
+
+<h2> 📚Requisitos Funcionais: </h2>
+
+@@ -29,8 +51,6 @@
+
+----
+
+
+
+<h2> 📚Requisitos Não Funcionais:</h2>
+
+<p>
+@@ -46,14 +66,14 @@
 
 <h2> 🤝 Créditos </h2>
 
 <p> Fernando Marcos Rodrigues</p>
+<p>Bezalel Miranda Ribeiro: https://github.com/bezalelmiranda</p>
 
 <P>Maria Eduarda Krutzsch</p>
+<p>Fernando Marcos Rodrigues: https://github.com/fernandoblumenau</p>
 
 <p>Sâmela Hostins</p>
+<p Marcus de Paula</p: https://github.com/marcusdepaula>
 
 <p>Bezalel Miranda Ribeiro</p>
+<P>Maria Eduarda Krutzsch: https://github.com/mariaedk</p>
 
 <p> Matheus Venera</p>
+<p>Matheus Venera: https://github.com/MatheusVenera</p>
 
 <p> Marcus de Paula</p>
+<p>Sâmela Hostins: https://github.com/SamelaHostins</p>
