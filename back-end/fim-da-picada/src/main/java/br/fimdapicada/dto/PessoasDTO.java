@@ -66,6 +66,7 @@ public class PessoasDTO implements Serializable {
 		this.localidadePessoas = localidadePessoas;
 		this.ufPessoas = ufPessoas;
 	}
+	
 
 	public Pessoas convertDtoToEntiy() {
 		return new Pessoas(getIdPessoas(), getNomePessoas(), getCpfPessoas(), getIdadePessoas(), getSexoPessoas(),

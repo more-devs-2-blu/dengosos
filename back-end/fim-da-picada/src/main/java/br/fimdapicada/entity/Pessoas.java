@@ -17,7 +17,7 @@ public class Pessoas {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(length = 45)
 	private String nome;
@@ -63,7 +63,7 @@ public class Pessoas {
 		super();
 	}
 
-	public Pessoas(int id, String nome, String cpf, int idade, String sexo, String status, Date data, String cep,
+	public Pessoas(Integer id, String nome, String cpf, int idade, String sexo, String status, Date data, String cep,
 			Integer numero, String logradouro, String bairro, String localidade, String uf) {
 		super();
 		this.id = id;
@@ -81,7 +81,7 @@ public class Pessoas {
 		this.uf = uf;
 	}
 
-	public Pessoas(int id, String nome, String cpf, int idade, String sexo, String status, String cep,
+	public Pessoas(Integer id, String nome, String cpf, int idade, String sexo, String status, String cep,
 			Integer numero, String logradouro, String bairro, String localidade, String uf) {
 		super();
 		this.id = id;
@@ -121,11 +121,11 @@ public class Pessoas {
 		this.sexo = sexo;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
