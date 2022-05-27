@@ -1,3 +1,4 @@
+import { UploadFileService } from './../../../services/upload-file/upload-file.service';
 import { ViaCepApiService } from './../../../services/via-cep-api/via-cep-api.service';
 import { Subject } from 'rxjs';
 import { ViaCep } from './../../../models/via-cep/via-cep';
@@ -31,7 +32,8 @@ export class FormFocoComponent implements OnInit {
   focoRetornadoBackEnd: Foco = new Foco({});
 
   constructor(private cepService: ViaCepApiService,
-    private focoService: FocoServiceService) { }
+    private focoService: FocoServiceService,
+    private uploadService: UploadFileService) { }
 
   ngOnInit(): void {
   }
@@ -63,18 +65,13 @@ export class FormFocoComponent implements OnInit {
       logradouroFocos: this.formContato.endereco.logradouro, bairroFocos: this.formContato.endereco.bairro, localidadeFocos: this.formContato.endereco.localidade,
       ufFocos: this.formContato.endereco.uf});
 
+      const formData = new FormData();
+      formData.append("file", this.fileFoco[0]);
+
       this.focoService.postFoco(foco).subscribe(
-        (msg) => {
-
-          this.focoRetornadoBackEnd = msg;
-          // SETANDO ARQUIVO DE FOTO
-          this.focoRetornadoBackEnd.foto = this.fileFoco[0];
-          console.log(this.focoRetornadoBackEnd.foto)
-
-          console.log('arquivo que vai ser postado')
-          console.log(this.fileFoco[0])
-          this.focoService.postImg(this.fileFoco[0]).subscribe(
-            (msg) => {
+        (res) => {
+          this.focoService.updateFoto(res.idFocos!, formData).subscribe(
+            (res) => {
               console.log('desgraça deve ter ido')
             }
           )
@@ -92,13 +89,8 @@ export class FormFocoComponent implements OnInit {
 
   onChange(event: any)
   {
-    const selectedFiles = <FileList>event.srcElement.files;
+    const selectedFiles = <FileList>event.target.files;
     this.fileFoco = selectedFiles;
-    console.log('ARQUIVO')
-    console.log(this.fileFoco)
-    this.files.add(selectedFiles[0])
-    document.getElementById('customFileLabel')!.innerHTML = selectedFiles[0].name;
-
   }
 
 

@@ -47,9 +47,8 @@ export class FocoServiceService {
     return this.http.get<string[]>(`${this.urlApiFocos}/nomesBairros`)
   }
 
-  postImg(file: any)
-   {
-    return this.http.post<any>(`${environment.urlApi}/file/uploadFile`, file);
+  updateFoto(id: number, file: FormData)
+  {
+    return this.http.put<any>(`${environment.urlApi}/focos/${id}/foto`, file);
   }
-
 }

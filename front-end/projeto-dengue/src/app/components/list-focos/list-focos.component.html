@@ -1,0 +1,37 @@
+<div class="container mt-5 mb-5">
+  <h1>Lista de Focos</h1>
+  <hr class="mb-5">
+  <div class="container mt-5 mb-5">
+      <div class="eight mb-5">
+          <div class="form-group">
+              <!-- <select (change)="onChange($event)" name="status"
+                      id="status"
+                      class="form-control col-md-4">
+                  <option selected="selected">-</option>
+                  <option value="U">Medicamentos em Uso</option>
+                  <option value="P">Medicamentos Pausados</option>
+                  <option value="F">Medicamentos Finalizados</option>
+                  <option value="I">Medicamentos Interrompidos</option>
+              </select> -->
+            </div>
+      </div>
+  </div>
+  <table class="table table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Descrição</th>
+          <th scope="col">Data</th>
+          <th scope="col">CEP</th>
+          <th scope="col">Imagem</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let focos of listaFocos$ | async">
+        <tr>
+          <td>{{ focos.descricaoFocos }}</td>
+          <td>{{ focos.dataFocos | date:'shortDate' }} </td>
+          <td>{{ focos.cepFocos }}</td>
+          <td><img class="imagem-foco" src="{{ focos.foto }}" alt=""></td>
+        </tr>
+      </tbody>
+    </table>
+</div>

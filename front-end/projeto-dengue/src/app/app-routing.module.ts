@@ -1,3 +1,4 @@
+import { ListFocosComponent } from './components/list-focos/list-focos.component';
 import { TelaLoginComponent } from './components/tela-login/tela-login.component';
 import { GraficoFaixaEtariaComponent } from './components/graficos/grafico-faixa-etaria/grafico-faixa-etaria.component';
 import { GraficoCasosComponent } from './components/graficos/grafico-casos/grafico-casos.component';
@@ -8,6 +9,7 @@ import { FormFocoComponent } from './components/foco/form-foco/form-foco.compone
 import { FormPessoaComponent } from './components/pessoa/form-pessoa/form-pessoa.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListagemPessoasComponent } from './components/listagem-pessoas/listagem-pessoas.component';
 
 const routes: Routes = [
   { path: 'cadastro-pessoa', component: FormPessoaComponent },
@@ -16,10 +18,13 @@ const routes: Routes = [
   { path: 'landing-page', component: LandingPageComponent },
 
   { path: 'tela-informacoes', component: TelaInformacaoComponent },
+  {path: 'listagem-pessoas', component: ListagemPessoasComponent},
 
   { path: 'grafico-focos', component: GraficoFocosComponent },
   { path: 'grafico-casos', component: GraficoCasosComponent },
   { path: 'grafico-faixa-etaria', component: GraficoFaixaEtariaComponent },
+
+  { path: 'list-focos', component: ListFocosComponent },
 
   { path: 'login', component: TelaLoginComponent },
 

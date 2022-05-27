@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Chart, registerables } from 'chart.js';
 import { PessoaServiceService } from './../../../services/pessoa/pessoa-service.service';
@@ -16,7 +17,7 @@ export class GraficoFaixaEtariaComponent implements OnInit {
   isLoadedCasos: boolean = false;
   backgroundColor: string[] = [];
 
-  constructor(private pessoasApi: PessoaServiceService) { }
+  constructor(private pessoasApi: PessoaServiceService, private router: Router) { }
   chart: any;
 
   ngOnInit(): void
@@ -28,15 +29,39 @@ export class GraficoFaixaEtariaComponent implements OnInit {
         this.isLoadedCasos = true;
      }
    )
-   this.showChart();
+
    setTimeout(() => this.showChart(), 2000);
   }
 
   showChart()
   {
-    this.chart = document.getElementById('my_first_chart')
+    this.chart = document.getElementById('grafico-faixa-etaria');
     Chart.register(...registerables);
     this.loadChart();
+  }
+
+  async destroyCanva()
+  {
+    Chart.unregister(this.chart);
+    await this.chart.remove();
+    if(document.getElementById('grafico-faixa-etaria')){
+      let canvasHtml = document.createElement('canvas');
+      canvasHtml.className = 'grafico-faixa-etaria'
+      document.getElementById('grafico-faixa-etaria')?.appendChild(canvasHtml);
+      this.chart = document.getElementById('grafico-faixa-etaria');
+    }
+    // this.chart.update();
+  }
+
+
+  async goCasos() {
+    await this.destroyCanva();
+    this.router.navigate(['/grafico-casos']);
+  }
+
+  async goFocos() {
+    await this.destroyCanva();
+    this.router.navigate(['/grafico-focos']);
   }
 
   loadChart() : void
@@ -70,6 +95,8 @@ export class GraficoFaixaEtariaComponent implements OnInit {
       }
     });
   }
-
+  ngOnDestroy() {
+    this.hasLoaded$ .unsubscribe()
+  }
 
 }

@@ -1,3 +1,12 @@
+<div class="container mb-3 mt-3">
+  <div *ngIf="msgRetorno | async" class="row ">
+    <div class="col">
+      <div class="alert alert-success mt-5 mb-5" role="alert">
+        Formulário enviado com sucesso!
+      </div>
+    </div>
+  </div>
+
 <div class="container mt-5 mb-5 custom-height">
   <div class="eight mb-5">
     <h1>Foco na Tela</h1>
@@ -18,7 +27,7 @@
     <!-- VIA CEP API -->
     <div class="form-group">
       <label for="endereço">CEP:</label>
-      <input type="text" [(ngModel)]="formContato.endereco.cep" (blur)="getViaCEP($event)" class="form-control col-md-4" name="cep" placeholder="CEP">
+      <input onkeypress="$(this).mask('00000-000')" type="text" [(ngModel)]="formContato.endereco.cep" (blur)="getViaCEP($event)" class="form-control col-md-4" name="cep" placeholder="CEP">
     </div>
 
       <!-- ENDEREÇO - API -->
@@ -27,7 +36,7 @@
         <div class="form-row mb-3">
           <div class="col">
             <label for="rua">Rua:</label>
-            <input type="text"  [(ngModel)]="formContato.endereco.logradouro" class="form-control col-md-8" name="rua" placeholder="Rua">
+            <input type="text" [(ngModel)]="formContato.endereco.logradouro" class="form-control col-md-8" name="rua" placeholder="Rua">
           </div>
           <div class="col">
             <label for="numero">Número:</label>

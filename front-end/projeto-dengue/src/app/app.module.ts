@@ -18,6 +18,8 @@ import { TelaLoginComponent } from './components/tela-login/tela-login.component
 import { NgChartsModule } from 'ng2-charts';
 import { ImgFocoComponent } from './components/img-foco/img-foco.component';
 import { LoadingComponent } from './components/common/loading/loading.component';
+import { ListFocosComponent } from './components/list-focos/list-focos.component';
+import { ListagemPessoasComponent } from './components/listagem-pessoas/listagem-pessoas.component';
 
 
 
@@ -35,7 +37,9 @@ import { LoadingComponent } from './components/common/loading/loading.component'
     GraficoFaixaEtariaComponent,
     TelaLoginComponent,
     ImgFocoComponent,
-    LoadingComponent
+    LoadingComponent,
+    ListFocosComponent,
+    ListagemPessoasComponent
   ],
   imports: [
     BrowserModule,

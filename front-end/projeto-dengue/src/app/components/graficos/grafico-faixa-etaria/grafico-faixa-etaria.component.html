@@ -5,8 +5,8 @@
   <p>Aqui você encontra a quantidade de <b>casos</b> por <b>faixa etária</b> em Blumenau!</p>
   <div class="grafico mt-5">
     <div>
-      <div *ngIf="hasLoaded$ | async; else loading">
-        <canvas  id="my_first_chart"></canvas>
+      <div id="container-canvas" *ngIf="hasLoaded$ | async; else loading">
+        <canvas  id="grafico-faixa-etaria"></canvas>
       </div>
       <ng-template #loading>
         <app-loading></app-loading>

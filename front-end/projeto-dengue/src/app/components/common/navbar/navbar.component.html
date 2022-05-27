@@ -19,6 +19,18 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/tela-informacoes" routerLinkActive="active-link">Curioso</a>
       </li>
+      <li *ngIf="toggleAgente === true;" class="nav-item">
+        <a class="nav-link" routerLink="/listagem-pessoas" routerLinkActive="active-link">Lista de casos</a>
+      </li>
+      <li *ngIf="toggleAgente === true;" class="nav-item">
+        <a class="nav-link" routerLink="/list-focos" routerLinkActive="active-link">Lista de focos</a>
+      </li>
+      <li *ngIf="toggleAgente === false" class="nav-item">
+        <a class="nav-link" routerLink="" (click)="alterarAgente()" >Sou agente</a>
+      </li>
+      <li *ngIf="toggleAgente === true" class="nav-item">
+        <a class="nav-link" routerLink="" (click)="alterarAgente()" >Logoff</a>
+      </li>
     </ul>
   </div>
 </nav>

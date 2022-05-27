@@ -1,0 +1,36 @@
+<div class="container mt-5 mb-5 custom-height">
+    <div class="eight mb-5">
+      <h1>Lista de pessoas</h1>
+      <p class="mb-5">Alguns dados podem ser sensíveis, use com cautela.</p>
+    </div>
+  
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">CPF</th>
+        <th scope="col">Idade</th>
+        <th scope="col">Status</th>
+        <th scope="col">Rua</th>
+        <th scope="col">Número</th>
+        <th scope="col">Bairro</th>
+        <th scope="col">Cidade</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let pessoa of listaPessoas | async">
+        <th scope="row">{{ pessoa.idPessoas }}</th>
+        <td>{{ pessoa.nomePessoas }}</td>
+        <td>{{ pessoa.cpfPessoas }}</td>
+        <td>{{ pessoa.idadePessoas }}</td>
+        <td>{{ pessoa.statusPessoas }}</td>
+        <td>{{ pessoa.logradouroPessoas }}</td>
+        <td>{{ pessoa.numeroPessoas }}</td>
+        <td>{{ pessoa.bairroPessoas }}</td>
+        <td>{{ pessoa.localidadePessoas }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  
