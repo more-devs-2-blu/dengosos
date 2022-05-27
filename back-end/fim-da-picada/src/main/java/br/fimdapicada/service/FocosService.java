@@ -41,5 +41,46 @@ public class FocosService {
 		repository.delete(foco);
 		return true;
 	}
+	
+	public List<Integer> qtdFocosPorBairro()
+	{
+		List<FocosDTO> listaFocosDTO = this.getAll();
+		
+		List<Integer> listaFocosNoBairro = new ArrayList<>();
+		
+		List<String> nomesBairros = this.listaNomeBairros();
+		
+		int qtdFocosBairro = 0;
+		
+		for (String nomeBairro: nomesBairros)
+		{
+			for (FocosDTO foco: listaFocosDTO)
+			{
+				if (foco.getBairroFocos().equals(nomeBairro))
+				{
+					qtdFocosBairro++;
+				}
+			}
+			listaFocosNoBairro.add(qtdFocosBairro);
+			qtdFocosBairro = 0;
+		}
+		return listaFocosNoBairro;
+	}
+	
+	public List<String> listaNomeBairros()
+	{
+		List<FocosDTO> listaFocosDTO = this.getAll();
+		List<String> nomesBairros = new ArrayList<>();
+		
+		for (FocosDTO focoDTO: listaFocosDTO)
+		{
+			if (!(nomesBairros.contains(focoDTO.getBairroFocos())))
+			{
+				nomesBairros.add(focoDTO.getBairroFocos());
+			}
+		}
+		return nomesBairros;
+	}
+
 
 }

@@ -4,31 +4,53 @@ import java.io.Serializable;
 import java.util.Date;
 
 import br.fimdapicada.entity.Focos;
+import io.swagger.annotations.ApiModelProperty;
 
 public class FocosDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@ApiModelProperty(value = "Código do Foco")
 	private Integer idFocos;
+
 	private String descricaoFocos;
 	private Date dataFocos;
 	private String cepFocos;
+	private Integer numeroEnderecoFocos;
 	private String logradouroFocos;
 	private String bairroFocos;
 	private String localidadeFocos;
 	private String ufFocos;
 
+	private String foto;
+
 	public FocosDTO() {
 		super();
 	}
 
-	public FocosDTO(Integer idFocos, String descricaoFocos, Date dataFocos, String cepFocos, String logradouroFocos,
-			String bairroFocos, String localidadeFocos, String ufFocos) {
+	public FocosDTO(Integer idFocos, String descricaoFocos, Date dataFocos, String cepFocos,
+			Integer numeroEnderecoFocos, String logradouroFocos, String bairroFocos, String localidadeFocos,
+			String ufFocos, String foto) {
 		super();
 		this.idFocos = idFocos;
 		this.descricaoFocos = descricaoFocos;
 		this.dataFocos = dataFocos;
 		this.cepFocos = cepFocos;
+		this.numeroEnderecoFocos = numeroEnderecoFocos;
+		this.logradouroFocos = logradouroFocos;
+		this.bairroFocos = bairroFocos;
+		this.localidadeFocos = localidadeFocos;
+		this.ufFocos = ufFocos;
+		this.foto = foto;
+	}
+
+	public FocosDTO(Integer idFocos, String descricaoFocos, String cepFocos, Integer numeroEnderecoFocos,
+			String logradouroFocos, String bairroFocos, String localidadeFocos, String ufFocos) {
+		super();
+		this.idFocos = idFocos;
+		this.descricaoFocos = descricaoFocos;
+		this.cepFocos = cepFocos;
+		this.numeroEnderecoFocos = numeroEnderecoFocos;
 		this.logradouroFocos = logradouroFocos;
 		this.bairroFocos = bairroFocos;
 		this.localidadeFocos = localidadeFocos;
@@ -36,8 +58,24 @@ public class FocosDTO implements Serializable {
 	}
 
 	public Focos convertDtoToEntiy() {
-		return new Focos(getIdFocos(), getDescricaoFocos(), getDataFocos(), getCepFocos(), getLogradouroFocos(),
-				getBairroFocos(), getLocalidadeFocos(), getUfFocos());
+		return new Focos(getIdFocos(), getDescricaoFocos(), getDataFocos(), getCepFocos(), getNumeroEnderecoFocos(),
+				getLogradouroFocos(), getBairroFocos(), getLocalidadeFocos(), getUfFocos(), getFoto());
+	}
+
+	public Integer getNumeroEnderecoFocos() {
+		return numeroEnderecoFocos;
+	}
+
+	public void setNumeroEnderecoFocos(Integer numeroEnderecoFocos) {
+		this.numeroEnderecoFocos = numeroEnderecoFocos;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public Integer getIdFocos() {

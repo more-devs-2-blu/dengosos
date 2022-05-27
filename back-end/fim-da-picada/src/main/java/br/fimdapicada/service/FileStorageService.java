@@ -37,6 +37,9 @@ public class FileStorageService {
 	// tamanho desse arquivo como o atributo uploadDir
 	public String storeFile(MultipartFile file) {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		String[] split = fileName.split("\\.");
+		long miliSegundo = System.currentTimeMillis();
+		fileName = split[0] + miliSegundo + "." + split[1];
 		try {
 			if (fileName.contains("..")) {
 				throw new FileStorageException("O nome do arquivo contém sequencia errada" + fileName);

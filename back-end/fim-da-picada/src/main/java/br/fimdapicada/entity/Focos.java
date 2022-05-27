@@ -12,8 +12,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import br.fimdapicada.dto.FocosDTO;
 
-
-
 @Entity
 public class Focos {
 
@@ -25,11 +23,14 @@ public class Focos {
 	private String descricao;
 
 	@CreationTimestamp
-	@Column(name = "data", nullable = false, updatable = false)
+	@Column(name = "data")
 	private Date data;
 
 	@Column
 	private String cep;
+
+	@Column
+	private Integer numeroEndereco;
 
 	@Column
 	private String logradouro;
@@ -43,21 +44,34 @@ public class Focos {
 	@Column
 	private String uf;
 
+	@Column(nullable = true)
+	private String foto;
+
 	public Focos() {
 		super();
 	}
 
-	public Focos(Integer id, String descricao, Date data, String cep, String logradouro, String bairro,
-			String localidade, String uf) {
+	public Focos(Integer id, String descricao, Date data, String cep, Integer numeroEndereco, String logradouro,
+			String bairro, String localidade, String uf, String foto) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.data = data;
 		this.cep = cep;
+		this.numeroEndereco = numeroEndereco;
 		this.logradouro = logradouro;
 		this.bairro = bairro;
 		this.localidade = localidade;
 		this.uf = uf;
+		this.foto = foto;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public Integer getId() {
@@ -86,6 +100,14 @@ public class Focos {
 
 	public String getCep() {
 		return cep;
+	}
+
+	public Integer getNumeroEndereco() {
+		return numeroEndereco;
+	}
+
+	public void setNumeroEndereco(Integer numeroEndereco) {
+		this.numeroEndereco = numeroEndereco;
 	}
 
 	public void setCep(String cep) {
@@ -125,8 +147,22 @@ public class Focos {
 	}
 
 	public FocosDTO getDTO() {
-		return new FocosDTO(getId(), getDescricao(), getData(), getCep(), getLogradouro(), getBairro(), getLocalidade(),
-				getUf());
+		return new FocosDTO(getId(), getDescricao(), getData(), getCep(), getNumeroEndereco(), getLogradouro(),
+				getBairro(), getLocalidade(), getUf(), getFoto());
+	}
+
+	public Focos(Integer id, String descricao, String cep, Integer numeroEndereco, String logradouro, String bairro,
+			String localidade, String uf, String foto) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.cep = cep;
+		this.numeroEndereco = numeroEndereco;
+		this.logradouro = logradouro;
+		this.bairro = bairro;
+		this.localidade = localidade;
+		this.uf = uf;
+		this.foto = foto;
 	}
 
 }

@@ -1,8 +1,4 @@
-package br.fimdapicada.controller;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+ package br.fimdapicada.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,62 +12,45 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.fimdapicada.dto.UploadFileResponseDTO;
+import br.fimdapicada.config.FileStorageConfig;
 import br.fimdapicada.service.FileStorageService;
+import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(value = "fileEndpoint")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/file")
 public class FileController {
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
 
 	@Autowired
 	private FileStorageService fileStorageService;
+	
+	@Autowired
+	private FileStorageConfig fileStorageConfig;
 
-	// faz o upload de um arquivo
-	@PostMapping
-	public UploadFileResponseDTO uploadFile(@RequestParam("file") MultipartFile file) {
-		String fileName = fileStorageService.storeFile(file);
-
-		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/file/downloadFile/")
-				.path(fileName).toUriString();
-
-		return new UploadFileResponseDTO(fileName, fileDownloadUri, file.getContentType(), file.getSize());
-	}
-
-	// upload de v√°rios arquivos
-	@PostMapping("/uploadMultipleFiles")
-	public List<UploadFileResponseDTO> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-		return Arrays.asList(files).stream().map(file -> uploadFile(file)).collect(Collectors.toList());
-
-	}
-
+	@ApiOperation(value = "Retorna um arquivo a partir do seu nome")
 	@GetMapping("/downloadFile/{fileName:.+}")
 	public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
 
 		Resource resource = fileStorageService.loadFileAsResource(fileName);
 		String contentType = null;
-
 		try {
 			contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
 		} catch (Exception e) {
-			logger.info("N√£o foi poss√≠vel determinar o tipo do arquivo");
+			logger.info("N„o foi possÌvel determinar o tipo do arquivo");
 		}
 		if (contentType == null) {
 			contentType = "application/octet-stream";
 		}
-
 		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
 				.body(resource);
 	}
+	
+	
 
 }

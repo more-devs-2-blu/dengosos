@@ -4,21 +4,23 @@ import java.io.Serializable;
 import java.util.Date;
 
 import br.fimdapicada.entity.Pessoas;
-
-
+import io.swagger.annotations.ApiModelProperty;
 
 public class PessoasDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@ApiModelProperty(value = "Código da Pessoa")
 	private Integer idPessoas;
+
 	private String nomePessoas;
 	private String cpfPessoas;
-	private Date dataNascimentoPessoas;
+	private Integer idadePessoas;
 	private String sexoPessoas;
 	private String statusPessoas;
 	private Date dataPessoas;
 	private String cepPessoas;
+	private Integer numeroPessoas;
 	private String logradouroPessoas;
 	private String bairroPessoas;
 	private String localidadePessoas;
@@ -28,18 +30,37 @@ public class PessoasDTO implements Serializable {
 		super();
 	}
 
-	public PessoasDTO(Integer idPessoas, String nomePessoas, String cpfPessoas, Date dataNascimentoPessoas,
-			String sexoPessoas, String statusPessoas, Date dataPessoas, String cepPessoas, String logradouroPessoas,
-			String bairroPessoas, String localidadePessoas, String ufPessoas) {
+	public PessoasDTO(Integer idPessoas, String nomePessoas, String cpfPessoas, Integer idadePessoas,
+			String sexoPessoas, String statusPessoas, Date dataPessoas, String cepPessoas, Integer numeroPessoas,
+			String logradouroPessoas, String bairroPessoas, String localidadePessoas, String ufPessoas) {
 		super();
 		this.idPessoas = idPessoas;
 		this.nomePessoas = nomePessoas;
 		this.cpfPessoas = cpfPessoas;
-		this.dataNascimentoPessoas = dataNascimentoPessoas;
+		this.idadePessoas = idadePessoas;
 		this.sexoPessoas = sexoPessoas;
 		this.statusPessoas = statusPessoas;
 		this.dataPessoas = dataPessoas;
 		this.cepPessoas = cepPessoas;
+		this.numeroPessoas = numeroPessoas;
+		this.logradouroPessoas = logradouroPessoas;
+		this.bairroPessoas = bairroPessoas;
+		this.localidadePessoas = localidadePessoas;
+		this.ufPessoas = ufPessoas;
+	}
+
+	public PessoasDTO(Integer idPessoas, String nomePessoas, String cpfPessoas, Integer idadePessoas,
+			String sexoPessoas, String statusPessoas, String cepPessoas, Integer numeroPessoas,
+			String logradouroPessoas, String bairroPessoas, String localidadePessoas, String ufPessoas) {
+		super();
+		this.idPessoas = idPessoas;
+		this.nomePessoas = nomePessoas;
+		this.cpfPessoas = cpfPessoas;
+		this.idadePessoas = idadePessoas;
+		this.sexoPessoas = sexoPessoas;
+		this.statusPessoas = statusPessoas;
+		this.cepPessoas = cepPessoas;
+		this.numeroPessoas = numeroPessoas;
 		this.logradouroPessoas = logradouroPessoas;
 		this.bairroPessoas = bairroPessoas;
 		this.localidadePessoas = localidadePessoas;
@@ -47,9 +68,17 @@ public class PessoasDTO implements Serializable {
 	}
 
 	public Pessoas convertDtoToEntiy() {
-		return new Pessoas(getIdPessoas(), getNomePessoas(), getCpfPessoas(), getDataNascimentoPessoas(),
-				getSexoPessoas(), getStatusPessoas(), getDataPessoas(), getCepPessoas(), getLogradouroPessoas(),
+		return new Pessoas(getIdPessoas(), getNomePessoas(), getCpfPessoas(), getIdadePessoas(), getSexoPessoas(),
+				getStatusPessoas(), getDataPessoas(), getCepPessoas(), getNumeroPessoas(), getLogradouroPessoas(),
 				getBairroPessoas(), getLocalidadePessoas(), getUfPessoas());
+	}
+
+	public Integer getNumeroPessoas() {
+		return numeroPessoas;
+	}
+
+	public void setNumeroPessoas(Integer numeroPessoas) {
+		this.numeroPessoas = numeroPessoas;
 	}
 
 	public String getCpfPessoas() {
@@ -76,12 +105,12 @@ public class PessoasDTO implements Serializable {
 		this.nomePessoas = nomePessoas;
 	}
 
-	public Date getDataNascimentoPessoas() {
-		return dataNascimentoPessoas;
+	public Integer getIdadePessoas() {
+		return idadePessoas;
 	}
 
-	public void setDataNascimentoPessoas(Date dataNascimentoPessoas) {
-		this.dataNascimentoPessoas = dataNascimentoPessoas;
+	public void setIdadePessoas(Integer idadePessoas) {
+		this.idadePessoas = idadePessoas;
 	}
 
 	public String getSexoPessoas() {

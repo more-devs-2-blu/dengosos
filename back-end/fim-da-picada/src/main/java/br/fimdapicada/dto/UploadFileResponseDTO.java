@@ -1,31 +1,40 @@
 package br.fimdapicada.dto;
 
 import java.io.Serializable;
-import java.util.List;
+
+import io.swagger.annotations.ApiModelProperty;
 
 public class UploadFileResponseDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@ApiModelProperty(value = "Nome do Arquivo")
 	private String fileName;
+
 	private String fileDownloadUri;
+	private Integer IdFoco;
 	private String fileType;
 	private long size;
 
-	public UploadFileResponseDTO(String fileName, String fileDownloadUri, String fileType, long size) {
+	public UploadFileResponseDTO(String fileName, String fileDownloadUri, Integer idFoco, String fileType, long size) {
 		super();
+		this.fileName = fileName;
 		this.fileDownloadUri = fileDownloadUri;
 		this.fileType = fileType;
+		IdFoco = idFoco;
 		this.size = size;
-		
-		String[] split = fileName.split("\\.");
-		long miliSegundo = System.currentTimeMillis();
-		this.fileName = split[0] + miliSegundo + "." + split[1];
-
 	}
 
 	public UploadFileResponseDTO() {
 		super();
+	}
+
+	public Integer getIdFoco() {
+		return IdFoco;
+	}
+
+	public void setIdFoco(Integer idFoco) {
+		IdFoco = idFoco;
 	}
 
 	public String getFileName() {
