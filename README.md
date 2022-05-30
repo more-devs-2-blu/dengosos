@@ -74,7 +74,7 @@ file.upload-dir= /Users/Acer/OneDrive/Documentos/ProjetoRemedios/UploadDir
 
 <p>Fernando Marcos Rodrigues: https://github.com/fernandoblumenau</p>
 
-<p Marcus de Paula</p: https://github.com/marcusdepaula>
+<p> Marcus de Paula: https://github.com/marcusdepaula</p>
 
 <P>Maria Eduarda Krutzsch: https://github.com/mariaedk</p>
 
